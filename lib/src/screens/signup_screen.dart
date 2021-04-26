@@ -30,6 +30,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       var nick = nickController.text;
       var password = passwordController.text;
       await createUser(nick, password);
+      Navigator.pop(context);
     } on DioError catch (e) {
       showAlertDialog(context, "Usuário já existente, escolha outro");
     }
