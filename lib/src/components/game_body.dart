@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simon_game/src/utils/sleep.dart';
 import 'background.dart';
 import 'board.dart';
@@ -25,8 +26,17 @@ class _GameBodyState extends State<GameBody> {
 
   @override
   void initState() {
-    initGame();
+    first();
     super.initState();
+  }
+
+  first() async {
+    final prefs = await SharedPreferences.getInstance();
+    final record = prefs.getInt('record') ?? 0;
+    this.record = record;
+    await sleep1Sec();
+    await sleep1Sec();
+    initGame();
   }
 
   initGame() async {
@@ -91,6 +101,10 @@ class _GameBodyState extends State<GameBody> {
         setState(() {
           record = level;
         });
+        final prefs = await SharedPreferences.getInstance();
+
+        // set value
+        prefs.setInt('record', level);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content:
               Text('Parabéns você conquistou um novo record! Nível: $level'),
