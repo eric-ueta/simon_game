@@ -24,7 +24,11 @@ Instruções para instalação do projeto:
 		1° Clonar repositório:
 		> git clone https://github.com/eric-ueta/simon_game.git
 
-		2° Escolher emulador ou device fisico e rodar.
+		2° Alterar URL base da API:
+		> lib/src/services/login_service.dart
+			- Alterar const baseURL para url desejada (ex.: xxx.xxx.xxx.xxx:8081)
+
+		3° Escolher emulador ou device fisico e rodar.
 		> flutter run
 
 	- .rar:
@@ -32,7 +36,11 @@ Instruções para instalação do projeto:
 
 		2° Acessar a pasta "simon_game"
 
-		3° Escolher emulador ou device fisico e rodar.
+		3° Alterar URL base da API:
+		> lib/src/services/login_service.dart
+			- Alterar const baseURL para url desejada (ex.: xxx.xxx.xxx.xxx:8081)
+
+		4° Escolher emulador ou device fisico e rodar.
 		> flutter run
 
 Participação dos colaboradores: 
