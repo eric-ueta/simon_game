@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:simon_game/src/screens/game_screen.dart';
 import 'package:simon_game/src/screens/home_screen.dart';
 import 'package:simon_game/src/screens/login_screen.dart';
-import 'package:simon_game/src/screens/signup_screen.dart';
-// import './src/screens/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   getInitialScreen() async {
     final prefs = await SharedPreferences.getInstance();
     final id = prefs.getInt('id') ?? null;

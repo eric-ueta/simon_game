@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simon_game/src/components/background.dart';
+import 'package:simon_game/src/screens/game_screen.dart';
 import 'package:simon_game/src/screens/home_screen.dart';
 import 'package:simon_game/src/screens/signup_screen.dart';
 import 'package:simon_game/src/services/login_service.dart';
@@ -32,6 +33,7 @@ class _LoginPageState extends State<LoginScreen> {
 
       final prefs = await SharedPreferences.getInstance();
       prefs.setInt('id', response);
+      prefs.setString('nick', nick);
       Navigator.push(
         context,
         MaterialPageRoute(

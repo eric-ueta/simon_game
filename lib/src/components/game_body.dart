@@ -4,6 +4,8 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:simon_game/src/services/login_service.dart';
+import 'package:simon_game/src/utils/alert.dart';
 import 'package:simon_game/src/utils/sleep.dart';
 import 'background.dart';
 import 'board.dart';
@@ -98,11 +100,15 @@ class _GameBodyState extends State<GameBody> {
       playSound(4);
 
       if (level > record) {
+        final prefs = await SharedPreferences.getInstance();
+
+        postRecord(prefs.getInt('id'), level);
+
         setState(() {
           record = level;
         });
-        final prefs = await SharedPreferences.getInstance();
-
+        gameOverAlert(
+            context, 'Parabéns você conquistou um novo record! Nível: $level');
         // set value
         prefs.setInt('record', level);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -111,6 +117,7 @@ class _GameBodyState extends State<GameBody> {
           backgroundColor: Colors.green,
         ));
       } else {
+        gameOverAlert(context, 'Fim de Jogo, você chegou ao nível: $level');
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Fim de Jogo, você chegou ao nível: $level'),
           backgroundColor: Colors.red,
