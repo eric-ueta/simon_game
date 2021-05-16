@@ -9,12 +9,10 @@ Colaboradores:
 
 Implementado: 
 	- Jogo funcional
-
-Falta implementar:
 	- Cadastro de jogadores
-	- Recorde dos jogadores cadastrados
-	* Será implementado em entregas futuras, com o desenvolvimento de API.
-
+	- Recorde dos jogadores
+	
+	
 Instruções para instalação do projeto:
 	Pré-requisito: Flutter devidamente configurado na máquina:
 	https://flutter.dev/docs/get-started/install
